@@ -22,7 +22,7 @@ namespace WebAPISample.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            // Retrieve all movies from db logic
+            // TODO Retrieve all movies from db logic
             return new string[] { "movie1 string", "movie2 string" };
         }
 
@@ -30,7 +30,7 @@ namespace WebAPISample.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            // Retrieve movie by id from db logic
+            // TODO Retrieve movie by id from db logic
             return "value";
         }
 
