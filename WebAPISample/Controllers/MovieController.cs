@@ -38,21 +38,21 @@ namespace WebAPISample.Controllers
         [HttpPost]
         public void Post([FromBody]Movie value)
         {
-            // Create movie in db logic
+            // TODO Create movie in db logic
         }
 
         // PUT api/movie/5
         [HttpPut]
         public void Put(int id, [FromBody]string value)
         {
-            // Update movie in db logic
+            // TODO Update movie in db logic
         }
 
-        // DELETE api/movie/5
+        // TODO DELETE api/movie/5
         [HttpDelete]
         public void Delete(int id)
         {
-            // Delete movie from db logic
+            // TODO Delete movie from db logic
         }
     }
 }
