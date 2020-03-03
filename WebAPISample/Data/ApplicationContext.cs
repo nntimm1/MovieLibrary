@@ -6,7 +6,7 @@ namespace WebAPISample.Data
     public class ApplicationContext : DbContext
     {
         public ApplicationContext(DbContextOptions options)
-            :base(options)
+            : base(options)
         {
 
         }
@@ -30,8 +30,13 @@ namespace WebAPISample.Data
             //  new Movie{Fill All Properties}
             //  );
             // View PlayerTracker project for example
-        }
 
-       // public DbSet<Movie> Movies { get; set; }
+     
+
     }
 }
+
+
+    
+
+
