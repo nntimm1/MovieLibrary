@@ -22,16 +22,9 @@ namespace WebAPISample.Data
              new Models.Movie {MovieId = 3, Title = "Inception", Genre = "Drama", Director = "Christopher Nolan" },
              new Models.Movie {MovieId = 4, Title = "Pineapple Express", Genre = "Comedy", Director = "David Gordon Green" },
              new Models.Movie {MovieId = 5, Title = "Die Hard", Genre = "Action", Director = "John McTiernan" });
-         
-       
-            // Seed data - needs migration
-            // modelBuilder.Entity<Movie>
-            //  .HasData(
-            //  new Movie{Fill All Properties}
-            //  );
-            // View PlayerTracker project for example
+            
         }
 
-       // public DbSet<Movie> Movies { get; set; }
+      
     }
 }

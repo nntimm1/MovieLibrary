@@ -20,38 +20,52 @@ namespace WebAPISample.Controllers
         }
         // GET api/movie
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Movie> Get ()
         {
-            // Retrieve all movies from db logic
-            return new string[] { "movie1 string", "movie2 string" };
+            var thismovie = _context.Movies;
+            return thismovie.ToList();
+            
         }
-
+        
         // GET api/movie/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Movie Get(int id)
         {
-            // Retrieve movie by id from db logic
-            return "value";
+           var thismovie =_context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+           _context.Movies.Find(id);
+           return thismovie;
         }
 
         // POST api/movie
         [HttpPost]
         public void Post([FromBody]Movie value)
         {
+
             // Create movie in db logic
         }
 
         // PUT api/movie/5
         [HttpPut]
-        public void Put(int id, [FromBody]string value)
+        public Movie Put(int id, [FromBody]string value, Movie movie)
         {
+             id = movie.MovieId;
+            _context.Movies.Find(id);
+            if (id != null)
+            {
+                var thismovie = movie;
+                _context.Movies.Where(m => m.MovieId == thismovie.MovieId && m.Title == thismovie.Title && m.Genre == thismovie.Genre && m.Director == thismovie.Director).ToList();
+                _context.SaveChanges();
+                return thismovie;
+            }
+            return movie;
+            
             // Update movie in db logic
         }
 
         // DELETE api/movie/5
         [HttpDelete]
         public void Delete(int id)
-        {
+        {             
             // Delete movie from db logic
         }
     }
