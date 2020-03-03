@@ -45,7 +45,6 @@ namespace WebAPISample.Controllers
         public void Post([FromBody]Movie value)
         {
 
-
             _context.Movies.Add(value);
             _context.SaveChanges();
             
@@ -61,15 +60,19 @@ namespace WebAPISample.Controllers
 
 
         [HttpDelete]
-        public void Delete(int id)
+        public void Delete(int id, Movie movie)
         {
-            var movie = _context.Movies
-                .Where(m => m.MovieId == id)
-                .FirstOrDefault();
-
-            _context.Remove(movie);
-            _context.SaveChanges();
-
+            // var deleteMovie = movie;
+            // deleteMovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            //_context.Movies.Find(id);
+            //if (id != movie.MovieId ) 
+            //{
+            //    NotFound();
+            
+            //}
+            //if(ModelState.IsValid)
+            //_context.Movies.Remove(deleteMovie);
+            //_context.SaveChanges();
         }
     }
 }
