@@ -61,6 +61,15 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+.hero{
+  background: url("img/Headert.jpg");
+  height: 50vh;
+  width: 100%;
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 body {
   margin: 0;
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -206,6 +215,7 @@ img {
   border-style: none;
   border-radius: inherit;
   border: 10px;
+  align-items: center;
 }
 
 svg {
@@ -626,6 +636,8 @@ pre code {
       flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  align-items: center;
+  align-content: center;
 }
 
 .no-gutters {

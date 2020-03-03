@@ -14,7 +14,7 @@ namespace WebAPISample.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ////base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
             //modelBuilder.Entity<Movie>()
             //    .HasData(
             // //new Models.Movie {MovieId = 1, Title = "The Departed", Genre = "Drama", Director = "Martin Scorsese" },
@@ -25,14 +25,17 @@ namespace WebAPISample.Data
 
 
             // Seed data - needs migration
-            // modelBuilder.Entity<Movie>
-            //  .HasData(
-            //  new Movie{Fill All Properties}
-            //  );
+            //modelBuilder.Entity<Movie>
+            // .HasData(
+            // new Movie { Fill All Properties }
+            // );
             // View PlayerTracker project for example
 
         }
 
+
+
+        
     }
 }        
 
