@@ -26,10 +26,7 @@ namespace WebAPISample.Data
             
         }
 
-<<<<<<< HEAD
-=======
-      
->>>>>>> d7a22e8e7c4b5f62245e3094bb4c62e4d7563a4b
+
     }
 }        
 
