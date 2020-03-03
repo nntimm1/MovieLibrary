@@ -6,7 +6,7 @@ namespace WebAPISample.Data
     public class ApplicationContext : DbContext
     {
         public ApplicationContext(DbContextOptions options)
-            :base(options)
+            : base(options)
         {
 
         }
@@ -14,6 +14,7 @@ namespace WebAPISample.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+<<<<<<< HEAD
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Movie>()
                 .HasData(
@@ -26,5 +27,34 @@ namespace WebAPISample.Data
         }
 
       
+=======
+            //base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<Movie>()
+            //    .HasData(
+            // //new Models.Movie {MovieId = 1, Title = "The Departed", Genre = "Drama", Director = "Martin Scorsese" },
+            // new Models.Movie {MovieId = 2, Title = "The Dark Knight", Genre = "Drama", Director = "Christopher Nolan" },
+            // new Models.Movie {MovieId = 3, Title = "Inception", Genre = "Drama", Director = "Christopher Nolan" },
+            // new Models.Movie {MovieId = 4, Title = "Pineapple Express", Genre = "Comedy", Director = "David Gordon Green" },
+            // new Models.Movie {MovieId = 5, Title = "Die Hard", Genre = "Action", Director = "John McTiernan" });
+
+
+            // Seed data - needs migration
+            //modelBuilder.Entity<Movie>
+            // .HasData(
+            // new Movie { Fill All Properties }
+            // );
+            // View PlayerTracker project for example
+
+        }
+
+
+
+        
+>>>>>>> 168764867acabf6b4c216ee498c8fbc66d9b1385
     }
-}
+}        
+
+
+    
+
+

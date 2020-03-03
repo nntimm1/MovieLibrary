@@ -18,15 +18,18 @@ namespace WebAPISample.Controllers
         {
             _context = context;
         }
-        // GET api/movie
+
         [HttpGet]
-        public IEnumerable<Movie> Get ()
+
+        public IEnumerable<Movie> Get()
         {
-            var thismovie = _context.Movies;
-            return thismovie.ToList();
-            
+
+
+            // Retrieve all movies from db logic
+
+            return _context.Movies.ToList();
         }
-        
+
         // GET api/movie/5
         [HttpGet("{id}")]
         public Movie Get(int id)
@@ -34,17 +37,18 @@ namespace WebAPISample.Controllers
            var thismovie =_context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
            _context.Movies.Find(id);
            return thismovie;
-        }
 
-        // POST api/movie
+        }
+       
         [HttpPost]
         public void Post([FromBody]Movie value)
         {
 
-            // Create movie in db logic
+            _context.Movies.Add(value);
+            _context.SaveChanges();            
         }
 
-        // PUT api/movie/5
+
         [HttpPut]
         public Movie Put(int id, [FromBody]string value, Movie movie)
         {
@@ -60,13 +64,20 @@ namespace WebAPISample.Controllers
             return movie;
             
             // Update movie in db logic
+
         }
 
-        // DELETE api/movie/5
+
         [HttpDelete]
         public void Delete(int id)
-        {             
-            // Delete movie from db logic
+
+        {
+            var movie = _context.Movies
+                .Where(m => m.MovieId == id)
+                .FirstOrDefault();
+
+            _context.Remove(movie);
+            _context.SaveChanges();
         }
     }
 }
