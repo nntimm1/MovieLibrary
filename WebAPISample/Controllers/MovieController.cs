@@ -17,7 +17,7 @@ namespace WebAPISample.Controllers
         public MovieController(ApplicationContext context)
         {
             _context = context;
-        }
+        } 
 
         [HttpGet]
 
@@ -38,11 +38,12 @@ namespace WebAPISample.Controllers
         }
        
         [HttpPost]
-        public void Post([FromBody]Movie value)
+        public IActionResult Post([FromBody]Movie value)
         {
 
             _context.Movies.Add(value);
-            _context.SaveChanges();            
+            _context.SaveChanges();
+            return Ok(value);
         }
 
 
