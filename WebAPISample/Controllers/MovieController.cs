@@ -20,41 +20,48 @@ namespace WebAPISample.Controllers
         }
 
         [HttpGet]
+
         public IEnumerable<Movie> Get()
         {
 
-
-            // Retrieve all movies from db logic
-
             return _context.Movies.ToList();
         }
-
 
         // GET api/movie/5
         [HttpGet("{id}")]
         public Movie Get(int id)
         {
+           var thismovie =_context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+           _context.Movies.Find(id);
+           return thismovie;
 
-            // Retrieve movie by id from db logic
-            var selectmovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
-            return selectmovie;
         }
-
        
         [HttpPost]
         public void Post([FromBody]Movie value)
         {
 
             _context.Movies.Add(value);
-            _context.SaveChanges();
-            
-       
+            _context.SaveChanges();            
         }
 
 
         [HttpPut]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Movie value)
         {
+            _context.Movies.Where(m => m.MovieId == id);
+            _context.Movies.Find(id);
+            if (id != value.MovieId)
+            {
+                NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                
+                _context.Movies.Update(value);
+                _context.SaveChanges();
+            }
+            
 
         }
 
@@ -73,6 +80,7 @@ namespace WebAPISample.Controllers
             //if(ModelState.IsValid)
             //_context.Movies.Remove(deleteMovie);
             //_context.SaveChanges();
+
         }
     }
 }
