@@ -20,37 +20,55 @@ namespace WebAPISample.Controllers
         }
 
         [HttpGet]
+
         public IEnumerable<Movie> Get()
         {
+
             return _context.Movies.ToList();
         }
 
-
+        // GET api/movie/5
         [HttpGet("{id}")]
         public Movie Get(int id)
         {
-            var selectmovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
-            return selectmovie;
+           var thismovie =_context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+           _context.Movies.Find(id);
+           return thismovie;
+
         }
-
-
+       
         [HttpPost]
         public void Post([FromBody]Movie value)
         {
+
             _context.Movies.Add(value);
-            _context.SaveChanges();
+            _context.SaveChanges();            
         }
 
 
         [HttpPut]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Movie value)
         {
+            _context.Movies.Where(m => m.MovieId == id);
+            _context.Movies.Find(id);
+            if (id != value.MovieId)
+            {
+                NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                
+                _context.Movies.Update(value);
+                _context.SaveChanges();
+            }
+            
 
         }
 
 
         [HttpDelete]
         public void Delete(int id)
+
         {
             var movie = _context.Movies
                 .Where(m => m.MovieId == id)
