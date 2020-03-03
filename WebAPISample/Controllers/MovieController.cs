@@ -20,25 +20,25 @@ namespace WebAPISample.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Movie> Get()
         {
-
-            return new string[] { "movie1 string", "movie2 string" };
+            return _context.Movies.ToList();
         }
 
 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Movie Get(int id)
         {
-
-            return "value";
+            var selectmovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            return selectmovie;
         }
 
 
         [HttpPost]
         public void Post([FromBody]Movie value)
         {
-
+            _context.Movies.Add(value);
+            _context.SaveChanges();
         }
 
 
@@ -52,7 +52,12 @@ namespace WebAPISample.Controllers
         [HttpDelete]
         public void Delete(int id)
         {
+            var movie = _context.Movies
+                .Where(m => m.MovieId == id)
+                .FirstOrDefault();
 
+            _context.Remove(movie);
+            _context.SaveChanges();
         }
     }
 }
