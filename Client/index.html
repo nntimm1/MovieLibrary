@@ -12,21 +12,46 @@
 <body>
 
     <h1>Welcome to MoviePhone</h1>
+    <br>
+    <h5>What you are interested in watching...</h>
+
 
 <div id="response">
     <pre></pre>
 </div>
 
+
 <div class="row , col-12">
 
-<form id="my-form">
+<form class="table" id="my-form" >
+    
     <input type="text" name="title" placeholder="Title" />
     <input type="text" name="genre" placeholder="Genre" />
     <input type="text" name="director" placeholder="Director" />
+<br><br>
+    <button type="submit">Search</button>
+    </form>
 
-    <button type="submit">Submit</button>
 </div>
-</form>
+
+
+<br><br><br>
+<h1>Search Results</h1>
+<div id="results table">
+    <table class="table">
+        <tr class="col-6">
+            <th>Movie Title</th>
+            <th>Genre</th>
+            <th>Director</th>
+        </tr>
+        <td> = $title </td>
+        <td> = $genre </td>
+        <td> = $director </td>
+        <tr>
+
+        </tr>
+    </table>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
