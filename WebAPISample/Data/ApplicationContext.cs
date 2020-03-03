@@ -25,7 +25,6 @@ namespace WebAPISample.Data
              new Models.Movie {MovieId = 5, Title = "Die Hard", Genre = "Action", Director = "John McTiernan" });
             
         }
-
     }
 }        
 
