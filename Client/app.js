@@ -6,78 +6,49 @@
       Director: this["director"].value
     };
 
-    $.ajax({
-      url: "https://localhost:44325/api/movie",
-      dataType: "json",
-      type: "post",
-      contentType: "application/json",
-      data: JSON.stringify(dict),
-      success: function(data, textStatus, jQxhr) {
-        $("#response pre").html(data);
-      },
-      error: function(jqXhr, textStatus, errorThrown) {
-        console.log(errorThrown);
-      }
-      e.processForm();
-    });
 
-    e.preventDefault();
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                $('#response pre').html( data );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+        
 
-  }
-  (function($) {
-    function processForm(e) {
-      var dict = {
-        Title: this["title"].value,
-        Genre: this["genre"].value,
-        Director: this["director"].value
-      };
-      $.ajax({
-        url:
-          "https://localhost:44325/api/movie/" +
-          "/" +
-          Put() /* im not sure adding this put method is correct found online */,
-        datatype: "json",
-        type: "put",
-        contentType: "application/json",
-        data: JSON.stringify(dict),
-        success: function(data, textStatus, jQxhr) {
-          $("#response pre").html(data);
-        },
-        error: function(jqXhr, textStatus, errorThrown) {
-          console.log(errorThrown);
-        }
-      });
-      e.preventDefault();
-      e.processForm();
+        e.preventDefault();
     }
-    (function($) {
-      function processForm(e) {
+
+    function processForm( e )
+    {
         var dict = {
-          Title: this["title"].value,
-          Genre: this["genre"].value,
-          Director: this["director"].value
+            Title : this["title"].value,
+            Genre : this['genre'].value,
+            Director : this["director"].value
         };
 
         $.ajax({
-          url:
-            "https://localhost:44325/api/movie" +
-            "/" +
-            get() /* im not sure adding this get method is correct found online */,
-          dataType: "json",
-          type: "get",
-          contentType: "application/json",
-          data: JSON.stringify(dict),
-          success: function(data, textStatus, jQxhr) {
-            $("#response pre").html(data);
-          },
-          error: function(jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-          }
+            url: 'https://localhost:44325/api/movie/movieId',
+            datatype: 'json',
+            type: 'put',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function (data, textStatus, jQxhr){
+                $('#response pre').html(data);
+            },
+            error: function (jqXhr, textStatus, errorThrown){
+                console.log(errorThrown);
+            }
         });
 
-        e.preventDefault();
         e.processForm();
-      }
+    }
 
       $(document).ready(function() {
         var movie_data = "";
