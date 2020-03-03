@@ -24,9 +24,6 @@ namespace WebAPISample.Controllers
         public IEnumerable<Movie> Get()
         {
 
-
-            // Retrieve all movies from db logic
-
             return _context.Movies.ToList();
         }
 
@@ -50,20 +47,21 @@ namespace WebAPISample.Controllers
 
 
         [HttpPut]
-        public Movie Put(int id, [FromBody]string value, Movie movie)
+        public void Put(int id, [FromBody]Movie value)
         {
-             id = movie.MovieId;
+            _context.Movies.Where(m => m.MovieId == id);
             _context.Movies.Find(id);
-            if (id != null)
+            if (id != value.MovieId)
             {
-                var thismovie = movie;
-                _context.Movies.Where(m => m.MovieId == thismovie.MovieId && m.Title == thismovie.Title && m.Genre == thismovie.Genre && m.Director == thismovie.Director).ToList();
-                _context.SaveChanges();
-                return thismovie;
+                NotFound();
             }
-            return movie;
+            if (ModelState.IsValid)
+            {
+                
+                _context.Movies.Update(value);
+                _context.SaveChanges();
+            }
             
-            // Update movie in db logic
 
         }
 
