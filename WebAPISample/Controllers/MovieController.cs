@@ -68,15 +68,20 @@ namespace WebAPISample.Controllers
 
 
         [HttpDelete]
-        public void Delete(int id)
-
+        public void Delete(int id, Movie movie)
         {
-            var movie = _context.Movies
-                .Where(m => m.MovieId == id)
-                .FirstOrDefault();
+            // var deleteMovie = movie;
+            // deleteMovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            //_context.Movies.Find(id);
+            //if (id != movie.MovieId ) 
+            //{
+            //    NotFound();
+            
+            //}
+            //if(ModelState.IsValid)
+            //_context.Movies.Remove(deleteMovie);
+            //_context.SaveChanges();
 
-            _context.Remove(movie);
-            _context.SaveChanges();
         }
     }
 }
