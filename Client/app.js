@@ -6,21 +6,19 @@
       Director: this["director"].value
     };
 
-
-        $.ajax({
-            url: 'https://localhost:44325/api/movie',
-            dataType: 'json',
-            type: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify(dict),
-            success: function( data, textStatus, jQxhr ){
-                $('#response pre').html( data );
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
-        
+    $.ajax({
+      url: "https://localhost:44325/api/movie",
+      dataType: "json",
+      type: "post",
+      contentType: "application/json",
+      data: JSON.stringify(dict),
+      success: function(data, textStatus, jQxhr) {
+        $("#response pre").html(data);
+      },
+      error: function(jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+      }
+    });
 
         e.preventDefault();
     }
@@ -35,6 +33,7 @@
       contentType: "application/json",
       success: function(data, textStatus, jQxhr) {
         console.log(data);
+
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
@@ -42,7 +41,8 @@
     });
 
     e.preventDefault();
-  }
+     }
+  
 
   $(document).ready(function() {
     var movie_data = "";
@@ -51,16 +51,17 @@
         movie_data += "<tr>";
         movie_data += "<td>" + value.title + "</td>";
         movie_data += "<td>" + value.genre + "</td>";
-        movie_data += "<td>" + value.director + "</td>";
+        movie_data += "<td>" + value.director + "</td>"
         movie_data += "<td>" + "<button type='update'>Update</button>" + "</td>"
-        movie_data += "</tr>";
+
       });
       $("#Results_Table").append(movie_data);
     });
   });
-
+ 
  
   
   
 
    
+
