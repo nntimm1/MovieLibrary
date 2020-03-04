@@ -20,7 +20,6 @@ namespace WebAPISample.Controllers
         } 
 
         [HttpGet]
-
         public IEnumerable<Movie> Get()
         {
 
@@ -36,6 +35,14 @@ namespace WebAPISample.Controllers
            return thismovie;
 
         }
+
+        
+        [HttpGet("{title}/{genre}/{director}")]
+        public Movie GetMovies(string title, string genre, string director)
+        {
+            var thismovie = _context.Movies.Where(m => m.Title == title && m.Genre == genre && m.Director == director).FirstOrDefault();
+            return thismovie;
+        }
        
         [HttpPost]
         public IActionResult Post([FromBody]Movie value)
@@ -48,7 +55,7 @@ namespace WebAPISample.Controllers
 
 
         [HttpPut]
-        public void Put(int id, [FromBody]Movie value)
+        public IActionResult Put(int id, [FromBody]Movie value)
         {
             _context.Movies.Where(m => m.MovieId == id);
             _context.Movies.Find(id);
@@ -61,8 +68,9 @@ namespace WebAPISample.Controllers
                 
                 _context.Movies.Update(value);
                 _context.SaveChanges();
+                return Ok(value);
             }
-            
+            return Ok(value);
 
         }
 
