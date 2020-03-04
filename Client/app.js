@@ -24,8 +24,8 @@ function processForm(e) {
 
 $("#my-form").submit(processForm);
 
-function Get(getMovies) {
-  $ajax({
+function Get() {
+  $.$ajax({
     url: "https://localhost:44325/api/movie",
     type: "get",
     dataType: "JSON",
@@ -47,3 +47,18 @@ function Get(getMovies) {
       });
     })
   });
+}
+
+function updateMovie(data){
+  $.ajax({
+    url: 'https://localhost:44325/api/movie',
+    dataType: 'json',
+    type: 'put',
+    success: function (data){
+      console.log(data);
+    },
+    error: function (error){
+      console.log(error);
+    }
+  })
+}

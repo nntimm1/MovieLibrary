@@ -47,18 +47,18 @@ namespace WebAPISample.Controllers
 
 
         [HttpPut]
-        public void Put(int id, [FromBody]Movie value)
+        public void Put(int id, [FromBody]Movie movie)
         {
             _context.Movies.Where(m => m.MovieId == id);
             _context.Movies.Find(id);
-            if (id != value.MovieId)
+            if (id != movie.MovieId)
             {
                 NotFound();
             }
             if (ModelState.IsValid)
             {
                 
-                _context.Movies.Update(value);
+                _context.Movies.Update(movie);
                 _context.SaveChanges();
             }
             
