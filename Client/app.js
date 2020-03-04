@@ -23,15 +23,12 @@ function processForm(e) {
 }
 
 function Get() {
-  console.log("Hello");
   $.ajax({
     url: "https://localhost:44325/api/movie",
     type: "get",
     dataType: "json",
     contentType: "application/json",
     success: function(data, textStatus, jQxhr) {
-      console.log("Hit success");
-      console.log(data);
       var movie_data = "";
       $.each(data, function(key, value) {
         movie_data += "<tr>";
@@ -40,15 +37,12 @@ function Get() {
         movie_data += "<td>" + value.director + "</td>";
         movie_data +=
           "<td>" +
-          "<button onclick='put()'  type='update'>Update</button>" +
+          "<button onclick='updateMovie()'  type='update'>Update</button>" +
           "</td>";
         movie_data += "</tr>";
       });
       $("#Results_Table").append(movie_data);
     },
-    error: function(jqXhr, textStatus, errorThrown) {
-      console.log("Hit fail");
-      console.log(errorThrown);
-    }
+    error: function(jqXhr, textStatus, errorThrown) {}
   });
 }
