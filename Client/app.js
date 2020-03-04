@@ -47,4 +47,3 @@ function Get(getMovies) {
       });
     })
   });
-}
