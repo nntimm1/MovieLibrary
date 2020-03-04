@@ -17,7 +17,6 @@ function processForm(e) {
       console.log(errorThrown);
     }
   });
-
   e.preventDefault();
   $("#my-form").submit(processForm);
 }
@@ -25,8 +24,8 @@ function processForm(e) {
 function Get() {
   $.ajax({
     url: "https://localhost:44325/api/movie",
-    type: "get",
     dataType: "json",
+    type: "get",
     contentType: "application/json",
     success: function(data, textStatus, jQxhr) {
       var movie_data = "";
@@ -42,7 +41,33 @@ function Get() {
         movie_data += "</tr>";
       });
       $("#Results_Table").append(movie_data);
+    }
+  });
+}
+
+function GetMovie() {
+  $.ajax({
+    url: "https://localhost:44325/api/movie",
+    dataType: "json",
+    type: "getmovies",
+    contentType: "application/json",
+    success: function(data, textStatus, jQxhr) {
+      $("#response pre").html(data);
     },
     error: function(jqXhr, textStatus, errorThrown) {}
+  });
+}
+
+function updateMovie(data) {
+  $.ajax({
+    url: "https://localhost:44325/api/movie",
+    dataType: "json",
+    type: "put",
+    success: function(data) {
+      console.log(data);
+    },
+    error: function(error) {
+      console.log(error);
+    }
   });
 }
