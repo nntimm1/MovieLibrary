@@ -4,7 +4,6 @@ function processForm(e) {
     Genre: this["genre"].value,
     Director: this["director"].value
   };
-
   $.ajax({
     url: "https://localhost:44325/api/movie",
     dataType: "json",
@@ -20,30 +19,36 @@ function processForm(e) {
   });
 
   e.preventDefault();
+  $("#my-form").submit(processForm);
 }
 
-$("#my-form").submit(processForm);
-
-function Get(getMovies) {
-  $ajax({
+function Get() {
+  console.log("Hello");
+  $.ajax({
     url: "https://localhost:44325/api/movie",
     type: "get",
-    dataType: "JSON",
-    success: $(document).ready(function() {
+    dataType: "json",
+    contentType: "application/json",
+    success: function(data, textStatus, jQxhr) {
+      console.log("Hit success");
+      console.log(data);
       var movie_data = "";
-      $.getJSON("https://localhost:44325/api/movie", function(data) {
-        $.each(data, function(key, value) {
-          movie_data += "<tr>";
-          movie_data += "<td>" + value.title + "</td>";
-          movie_data += "<td>" + value.genre + "</td>";
-          movie_data += "<td>" + value.director + "</td>";
-          movie_data +=
-            "<td>" +
-            "<button onclick='put()'  type='update'>Update</button>" +
-            "</td>";
-          movie_data += "</tr>";
-        });
-        $("#Results_Table").append(movie_data);
+      $.each(data, function(key, value) {
+        movie_data += "<tr>";
+        movie_data += "<td>" + value.title + "</td>";
+        movie_data += "<td>" + value.genre + "</td>";
+        movie_data += "<td>" + value.director + "</td>";
+        movie_data +=
+          "<td>" +
+          "<button onclick='put()'  type='update'>Update</button>" +
+          "</td>";
+        movie_data += "</tr>";
       });
-    })
+      $("#Results_Table").append(movie_data);
+    },
+    error: function(jqXhr, textStatus, errorThrown) {
+      console.log("Hit fail");
+      console.log(errorThrown);
+    }
   });
+}
