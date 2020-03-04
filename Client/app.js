@@ -58,13 +58,14 @@ function GetMovie() {
   });
 }
 
-function updateMovie(data) {
+function updateMovie(movieId) {
   $.ajax({
     url: "https://localhost:44325/api/movie",
     dataType: "json",
     type: "put",
-    success: function(data) {
-      console.log(data);
+    data: JSON.stringify(movieId),
+    success: function(movieId) {
+      console.log(movieId);
     },
     error: function(error) {
       console.log(error);
