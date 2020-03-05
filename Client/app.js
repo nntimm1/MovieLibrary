@@ -48,8 +48,10 @@ function Get() {
       $("#Results_Table").append(movie_data);
     },
     error: function(jqXhr, textStatus, errorThrown) {
+
       console.log("Hit fail");
       console.log(errorThrown);
+
     }
   });
 
@@ -97,18 +99,16 @@ $("#edit-form").submit(filterMovie);
 
 
 
-function updateMovie(movieId) {
-  $.ajax({
-    url: "https://localhost:44325/api/movie",
-    dataType: "json",
-    type: "put",
-    success: function(data) {
-      console.log(data);
-    data: JSON.stringify(movieId),
-      console.log(movieId);
-    },
-    error: function(error) {
-      console.log(error);
-    }
-    });
-  }
+
+function UpdateMovie(){
+  $('#my-form button').html("Update Movie");
+  var text = $(this).closest('tr').find('.title').text();
+  $("#formTitle").val(text);
+  text = $(this).closest('tr').find('.director').text();
+  $("#formDirector").val(text);
+  text = $(this).closest('tr').find('.genre').text();
+  $("#formGenre").val(text);
+  text = $(this).closest('tr').find('.movieId').text();
+  $("#formMovieId").val(text);
+}
+
