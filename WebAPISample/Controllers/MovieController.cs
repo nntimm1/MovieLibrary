@@ -17,7 +17,7 @@ namespace WebAPISample.Controllers
         public MovieController(ApplicationContext context)
         {
             _context = context;
-        } 
+        }
 
         [HttpGet]
         public IEnumerable<Movie> Get()
@@ -30,20 +30,20 @@ namespace WebAPISample.Controllers
         [HttpGet("{id}")]
         public Movie Get(int id)
         {
-           var thismovie =_context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
-           _context.Movies.Find(id);
-           return thismovie;
+            var thismovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+            _context.Movies.Find(id);
+            return thismovie;
 
         }
 
-        
+
         [HttpGet("{title}/{genre}/{director}")]
         public Movie GetMovies(string title, string genre, string director)
         {
             var thismovie = _context.Movies.Where(m => m.Title == title && m.Genre == genre && m.Director == director).FirstOrDefault();
             return thismovie;
         }
-       
+
         [HttpPost]
         public IActionResult Post([FromBody]Movie value)
         {
@@ -56,42 +56,46 @@ namespace WebAPISample.Controllers
 
         [HttpPut]
 
-        public void Put(int id, [FromBody]Movie value)
 
+        public IActionResult Put([FromBody]Movie movie)
         {
-            _context.Movies.Where(m => m.MovieId == id);
-            _context.Movies.Find(id);
-            if (id != value.MovieId)
+            var editMovie =
+            _context.Movies.Where(m => m.MovieId == movie.MovieId);
+
+            if (movie != editMovie)
             {
                 NotFound();
             }
             if (ModelState.IsValid)
             {
-                
-                _context.Movies.Update(value);
+
+                _context.Movies.Update(movie);
                 _context.SaveChanges();
-               
+
+                return Ok(movie);
             }
-           
 
+            return Ok(movie);
         }
 
+    
 
-        [HttpDelete]
-        public void Delete(int id, Movie movie)
-        {
-            // var deleteMovie = movie;
-            // deleteMovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
-            //_context.Movies.Find(id);
-            //if (id != movie.MovieId ) 
-            //{
-            //    NotFound();
-            
-            //}
-            //if(ModelState.IsValid)
-            //_context.Movies.Remove(deleteMovie);
-            //_context.SaveChanges();
 
-        }
+    [HttpDelete]
+    public void Delete(int id, Movie movie)
+    {
+        // var deleteMovie = movie;
+        // deleteMovie = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+        //_context.Movies.Find(id);
+        //if (id != movie.MovieId ) 
+        //{
+        //    NotFound();
+
+        //}
+        //if(ModelState.IsValid)
+        //_context.Movies.Remove(deleteMovie);
+        //_context.SaveChanges();
+
     }
+   }
 }

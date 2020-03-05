@@ -1,4 +1,3 @@
-
 function processForm(e) {
   var dict = {
     Title: this["title"].value,
@@ -17,11 +16,9 @@ function processForm(e) {
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
     }
-    
   });
   e.preventDefault();
   $("#my-form").submit(processForm);
-
 }
 
 function Get() {
@@ -50,7 +47,7 @@ function Get() {
   });
 }
 
-function GetMovie(){
+function GetMovie() {
   $.ajax({
     url: "https://localhost:44325/api/movie",
     dataType: "json",
@@ -59,9 +56,7 @@ function GetMovie(){
     success: function(data, textStatus, jQxhr) {
       $("#response pre").html(data);
     },
-    error: function(jqXhr, textStatus, errorThrown) {
-      console.log(errorThrown);
-    }
+    error: function(jqXhr, textStatus, errorThrown) {}
   });
 }
 
