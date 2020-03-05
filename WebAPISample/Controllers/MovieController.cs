@@ -55,26 +55,24 @@ namespace WebAPISample.Controllers
 
 
         [HttpPut]
-<<<<<<< HEAD
-        public void Put(int id, [FromBody]Movie movie)
-=======
-        public IActionResult Put(int id, [FromBody]Movie value)
->>>>>>> 70a23bcf5f00fba67e59fa0e4226bf754a8f22a8
+
+        public void Put(int id, [FromBody]Movie value)
+
         {
             _context.Movies.Where(m => m.MovieId == id);
             _context.Movies.Find(id);
-            if (id != movie.MovieId)
+            if (id != value.MovieId)
             {
                 NotFound();
             }
             if (ModelState.IsValid)
             {
                 
-                _context.Movies.Update(movie);
+                _context.Movies.Update(value);
                 _context.SaveChanges();
-                return Ok(value);
+               
             }
-            return Ok(value);
+           
 
         }
 
