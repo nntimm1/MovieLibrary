@@ -1,56 +1,68 @@
-<!DOCTYPE html>
-<html>
-    
-<head>
-    
-    <link rel="stylesheet" href="bootstrap.css" >
-    <link rel="stylesheet" href="style.css">
-    <meta charset="utf-8">
-    <title>jQuery AJAX POST Form</title>
-</head>
-<body>
-<section class="hero">
-    
-    
-</section>
-<div class="container">
-    <h1 class="page-title">Welcome to MoviePhone</h1>
+
+  <!DOCTYPE html>
+  <html>
+      
+  <head>
+      
+      <link rel="stylesheet" href="bootstrap.css" >
+      <link rel="stylesheet" href="style.css">
+      <meta charset="utf-8">
+      <title>jQuery AJAX POST Form</title>
+  </head>
+  <body>
+  <section class="hero">
+      
+      
+  </section>
+  <div class="container">
+      <h1 class="page-title">Welcome to MoviePhone</h1>
+      <br>
+      <h5>What you are interested in watching...</h5>
+      <div id="response">
+      <pre></pre>
+      </div>
+  <div class="row col-12">
+      
+  <form class="table" id="my-form" >
+      
+      <input type="text" name="title" placeholder="Title" />
+      <input type="text" name="genre" placeholder="Genre" />
+      <input type="text" name="director" placeholder="Director" />
+  <br><br>
+   <button type="submit">Create</button><br>
+    </form>
     <br>
-    <h5>What you are interested in watching...</h5>
-    <div id="response">
-    <pre></pre>
-    </div>
-<div class="row col-12">
-    
-<form class="table" id="my-form" >
-    
+  <form class="table" id="edit form">
     <input type="text" name="title" placeholder="Title" />
     <input type="text" name="genre" placeholder="Genre" />
     <input type="text" name="director" placeholder="Director" />
-<br><br>
-    <button type="submit">Create</button>
-    <button onclick="GetMovie()">Search</button>
-    <button onclick="Get()">Movies</button>
-    </form>
-</div>
-<br><br><br>
-<h1>Search Results</h1>
-<div id="results">
-    <table class="table-responsive">
-<br>
-<table class="table" id="Results_Table">
-        <tr>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Director</th>
-        <th></th>
-    </tr>
-</table>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="./app.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-</html>
+    <br><br>
+     <button onclick="filterMovie(e)">Search</button>
+     </form>
+  </div>
+  <button onClick= "Get()">Get All</button>
+  <br><br><br>
+  <h1>Search Results</h1>
+  <table class="table" id="movie_table">
+      <tr>
+          <th>Title</th>
+          <th>Genre</th>
+           <th>Director</th>
+      </tr> 
+  <div id="results">
+      <table class="table-responsive">
+  <br>
+  <table class="table" id="Results_Table">
+          <tr>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Director</th>
+          <th></th>
+      </tr>
+  </table>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+  </body>
+  </html>
+  
