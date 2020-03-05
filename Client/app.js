@@ -58,7 +58,9 @@ function Get() {
 
 function filterMovie() {
   var dict = {
-   movieId: this["movieId"].value
+    movieId: this["movieId"].value,
+   
+   
   };
   
   $.ajax({
@@ -72,6 +74,7 @@ function filterMovie() {
       var movie_data = "";
       $.each(data, function(key, value) {
         movie_data += "<tr>";
+        movie_data =+ "<td>" + value.movieId + "</td>";
         movie_data += "<td>" + value.title + "</td>";
         movie_data += "<td>" + value.genre + "</td>";
         movie_data += "<td>" + value.director + "</td>";

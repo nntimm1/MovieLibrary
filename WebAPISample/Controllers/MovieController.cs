@@ -28,7 +28,7 @@ namespace WebAPISample.Controllers
 
         // GET api/movie/5
         [HttpGet("{id}")]
-        public Movie Get(int id)
+        public Movie GetId(int id)
         {
            var thismovie =_context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
            _context.Movies.Find(id);
@@ -40,8 +40,9 @@ namespace WebAPISample.Controllers
         [HttpGet("{title}/{genre}/{director}")]
         public Movie GetMovies(string title, string genre, string director)
         {
-            var thismovie = _context.Movies.Where(m => m.Title == title && m.Genre == genre && m.Director == director).FirstOrDefault();
+             var thismovie =_context.Movies.Where(m => m.Title == title && m.Genre == genre && m.Director == director).FirstOrDefault();
             return thismovie;
+            
         }
        
         [HttpPost]
