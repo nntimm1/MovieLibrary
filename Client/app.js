@@ -1,5 +1,7 @@
+
 function processForm(e) {
   var dict = {
+    movieId: this["movieId"].value,
     Title: this["title"].value,
     Genre: this["genre"].value,
     Director: this["director"].value
@@ -18,7 +20,7 @@ function processForm(e) {
     }
   });
   e.preventDefault();
-  $("#my-form").submit(processForm);
+$("#my-form").submit(processForm);
 }
 
 function Get() {
@@ -28,15 +30,18 @@ function Get() {
     dataType: "json",
     contentType: "application/json",
     success: function(data, textStatus, jQxhr) {
+      console.log("Hit success");
+      console.log(data);
       var movie_data = "";
       $.each(data, function(key, value) {
         movie_data += "<tr>";
+        movie_data += "<td>" + value.movieId + "</td>";
         movie_data += "<td>" + value.title + "</td>";
         movie_data += "<td>" + value.genre + "</td>";
         movie_data += "<td>" + value.director + "</td>";
         movie_data +=
           "<td>" +
-          "<button onclick='updateMovie()'  type='update'>Update</button>" +
+          "<button onclick='put()'  type='update'>Update</button>" +
           "</td>";
         movie_data += "</tr>";
       });
@@ -47,21 +52,18 @@ function Get() {
       console.log(errorThrown);
     }
   });
-  
+
 }
 
 
-
-
-function filterMovie(e) {
-  console.log("hello")
-  var title = this["title"].value;
-  var genre =this["genre"].value;
-  var director = this["director"].value;
-
+function filterMovie() {
+  var dict = {
+   movieId: this["movieId"].value
+  };
+  
   $.ajax({
-    url: "https://localhost:44325/api/movie/" + title["title"] + "/" + genre["genre"] + "/" + director["director"],
-    type: "getmovies",
+    url: "https://localhost:44325/api/movie" + "/" + dict.movieId,
+    type: "getid",
     dataType: "json",
     contentType: "application/json",
     success: function(data, textStatus, jQxhr) {
@@ -81,25 +83,29 @@ function filterMovie(e) {
       });
       $("#movie_table").append(movie_data);
     },
-
-    error: function(jqXhr, textStatus, errorThrown) {}
-  });
-  $("#find_movie").submit(filterMovie);
-
+    error: function(jqXhr, textStatus, errorThrown) {
+      console.log("Hit fail");
+      console.log(errorThrown);
+    }
+  
+});
+$("#edit-form").submit(filterMovie);
 }
+
+
 
 function updateMovie(movieId) {
   $.ajax({
     url: "https://localhost:44325/api/movie",
     dataType: "json",
     type: "put",
+    success: function(data) {
+      console.log(data);
     data: JSON.stringify(movieId),
-    success: function(movieId) {
       console.log(movieId);
     },
     error: function(error) {
       console.log(error);
     }
-  });
-}
-
+    });
+  }

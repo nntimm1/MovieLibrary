@@ -32,15 +32,13 @@
    <button type="submit">Create</button><br>
     </form>
     <br>
-  <form class="table" id="find_movie">
-    <input type="text" name="title" placeholder="Title" />
-    <input type="text" name="genre" placeholder="Genre" />
-    <input type="text" name="director" placeholder="Director" />
+  <form class="table" id="edit-form">
+
+    <input type="text" name="movieId" placeholder="Id" />
+  
 
 <br><br>
-
-    <button type="submit">Create</button><br><br>
-    <button onclick="fliterMovies(e)" >Search</button>
+ <button onclick='filterMovie()'>Search</button>
     </form>
 </div>
 <center>
@@ -48,11 +46,12 @@
 </center>
 <br>
 <h1> Search results</h1>
-<div id ="find_movie">
+<div id ="edit-form">
 <table class="table-responsive">
     <br>
-    <table class="table" id="find_movie">
+    <table class="table" id="edit-form">
             <tr>
+            <th>Id</th>
             <th>Title</th>
             <th>Genre</th>
             <th>Director</th>
@@ -68,6 +67,7 @@
 <br>
 <table class="table" id="Results_Table">
         <tr>
+        <th>Id</th>
         <th>Title</th>
         <th>Genre</th>
         <th>Director</th>
