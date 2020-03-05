@@ -265,6 +265,7 @@ label {
 
 button {
   border-radius: 0;
+  align-self: center;
 }
 
 button:focus {
@@ -609,6 +610,9 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  align-self: center;
+  align-content: center;
+  align-items: center;
 }
 
 @media (min-width: 576px) {

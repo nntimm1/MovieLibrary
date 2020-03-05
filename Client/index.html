@@ -32,37 +32,50 @@
    <button type="submit">Create</button><br>
     </form>
     <br>
-  <form class="table" id="edit form">
+  <form class="table" id="find_movie">
     <input type="text" name="title" placeholder="Title" />
     <input type="text" name="genre" placeholder="Genre" />
     <input type="text" name="director" placeholder="Director" />
-    <br><br>
-     <button onclick="filterMovie(e)">Search</button>
-     </form>
-  </div>
-  <button onClick= "Get()">Get All</button>
-  <br><br><br>
-  <h1>Search Results</h1>
-  <table class="table" id="movie_table">
-      <tr>
-          <th>Title</th>
-          <th>Genre</th>
-           <th>Director</th>
-      </tr> 
-  <div id="results">
-      <table class="table-responsive">
-  <br>
-  <table class="table" id="Results_Table">
-          <tr>
-          <th>Title</th>
-          <th>Genre</th>
-          <th>Director</th>
-          <th></th>
-      </tr>
-  </table>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="./app.js"></script>
-  </body>
-  </html>
-  
+
+<br><br>
+
+    <button type="submit">Create</button><br><br>
+    <button onclick="fliterMovies(e)" >Search</button>
+    </form>
+</div>
+<center>
+<button onClick= "Get()">Get All Movies</button>
+</center>
+<br>
+<h1> Search results</h1>
+<div id ="find_movie">
+<table class="table-responsive">
+    <br>
+    <table class="table" id="find_movie">
+            <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Director</th>
+            <th></th>
+        </tr>
+    </table>
+
+</div>
+<br><br><br>
+<h2>Movies</h2>
+<div id="results">
+    <table class="table-responsive">
+<br>
+<table class="table" id="Results_Table">
+        <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Director</th>
+        <th></th>
+    </tr>
+</table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+</body>
+</html>

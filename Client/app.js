@@ -1,4 +1,3 @@
-
 function processForm(e) {
   var dict = {
     Title: this["title"].value,
@@ -23,15 +22,12 @@ function processForm(e) {
 }
 
 function Get() {
-  
   $.ajax({
     url: "https://localhost:44325/api/movie",
     type: "get",
     dataType: "json",
     contentType: "application/json",
     success: function(data, textStatus, jQxhr) {
-      console.log("Hit success");
-      console.log(data);
       var movie_data = "";
       $.each(data, function(key, value) {
         movie_data += "<tr>";
@@ -40,7 +36,7 @@ function Get() {
         movie_data += "<td>" + value.director + "</td>";
         movie_data +=
           "<td>" +
-          "<button onclick='put()'  type='update'>Update</button>" +
+          "<button onclick='updateMovie()'  type='update'>Update</button>" +
           "</td>";
         movie_data += "</tr>";
       });
@@ -51,6 +47,7 @@ function Get() {
       console.log(errorThrown);
     }
   });
+  
 }
 
 
@@ -61,6 +58,7 @@ function filterMovie(e) {
   var title = this["title"].value;
   var genre =this["genre"].value;
   var director = this["director"].value;
+
   $.ajax({
     url: "https://localhost:44325/api/movie/" + title["title"] + "/" + genre["genre"] + "/" + director["director"],
     type: "getmovies",
@@ -83,11 +81,25 @@ function filterMovie(e) {
       });
       $("#movie_table").append(movie_data);
     },
-    error: function(jqXhr, textStatus, errorThrown) {
-      console.log("Hit fail");
-      console.log(errorThrown);
-    }
-  
-});
+
+    error: function(jqXhr, textStatus, errorThrown) {}
+  });
+  $("#find_movie").submit(filterMovie);
+
 }
-$("#edit-form").submit(filterMovie);
+
+function updateMovie(movieId) {
+  $.ajax({
+    url: "https://localhost:44325/api/movie",
+    dataType: "json",
+    type: "put",
+    data: JSON.stringify(movieId),
+    success: function(movieId) {
+      console.log(movieId);
+    },
+    error: function(error) {
+      console.log(error);
+    }
+  });
+}
+
